@@ -154,6 +154,8 @@ return {
           intelephense = {
             stubs = {
               'wordpress',
+              'ldap',
+              'superglobals',
               'apache',
               'bcmath',
               'Core',
