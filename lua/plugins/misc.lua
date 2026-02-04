@@ -41,4 +41,5 @@ return {
       require('colorizer').setup()
     end,
   },
+  { 'sindrets/diffview.nvim' },
 }

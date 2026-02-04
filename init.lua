@@ -13,23 +13,14 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Set up plugins
 require('lazy').setup {
-  require 'plugins.neotree',
-  require 'plugins.colortheme',
-  require 'plugins.bufferline',
-  require 'plugins.lualine',
-  require 'plugins.treesitter',
-  require 'plugins.telescope',
-  require 'plugins.lsp',
-  require 'plugins.autocompletion',
-  require 'plugins.none-ls',
-  require 'plugins.gitsigns',
-  require 'plugins.alpha',
-  require 'plugins.indent-blankline',
-  require 'plugins.misc',
-  require 'plugins.comment',
+  { import = 'plugins' },
 }
+
+local user_rocks = vim.fn.expand '$HOME' .. '/.luarocks/share/lua/5.1/?.lua;' .. vim.fn.expand '$HOME' .. '/.luarocks/share/lua/5.1/?/init.lua'
+local user_cpath = vim.fn.expand '$HOME' .. '/.luarocks/lib/lua/5.1/?.so'
+package.path = package.path .. ';' .. user_rocks
+package.cpath = package.cpath .. ';' .. user_cpath
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
